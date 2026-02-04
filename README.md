@@ -92,3 +92,16 @@ terraform plan
 ```bash
 terraform apply
 ```
+
+## Comprobaciones de seguridad usando checkov
+
+1. Instalar la libreria 
+
+```bash 
+pip install checkov
+```
+2. Comprobacion del estado de seguridad del proyecto debemos ubicarnos en la carpeta del proyecto `environments\sandbox\`
+
+```bash
+checkov -d .
+```

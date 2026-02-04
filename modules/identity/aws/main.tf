@@ -25,10 +25,10 @@ resource "aws_iam_policy" "read_only_policy" {
       {
         Effect   = "Allow"
         Action   = [
-          "iam:Get*",
-          "iam:List*"
+          "iam:GetRole",
+          "iam:ListAttachedRolePolicies"
         ]
-        Resource = "*"
+        Resource = "arn:aws:iam::123456789012:role/sif-*"
       }
     ]
   })
@@ -38,8 +38,17 @@ resource "aws_iam_user" "limited_user" {
   name = "sif-sandbox-user"
 }
 
-resource "aws_iam_user_policy_attachment" "attach_policy" {
-  user       = aws_iam_user.limited_user.name
+resource "aws_iam_group" "read_only_group" {
+  name = "sif-read-only-group"
+}
+
+resource "aws_iam_group_policy_attachment" "group_attach_policy" {
+  group      = aws_iam_group.read_only_group.name
   policy_arn = aws_iam_policy.read_only_policy.arn
+}
+
+resource "aws_iam_user_group_membership" "user_membership" {
+  user   = aws_iam_user.limited_user.name
+  groups = [aws_iam_group.read_only_group.name]
 }
 

@@ -6,6 +6,7 @@ variable "aws_region" {
 variable "gcp_project_id" {
   description = "ID del proyecto GCP para pruebas"
   type        = string
+  default     = "itcloud"
 }
 variable "gcp_region" {
   description = "Región GCP para pruebas"

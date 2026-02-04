@@ -4,5 +4,5 @@ module "iam_azure_sandbox" {
   app_name = "sif-azure-sandbox-app"
   role_name = "Reader"
 
-  scope = "/subscriptions/<TU_SUBSCRIPTION_ID>"
+  scope = "/subscriptions/b544f5cc-e2c9-4e47-b195-44c5184aab2f"
 }

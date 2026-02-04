@@ -39,7 +39,7 @@ provider "azuread" {
   tenant_id = data.azurerm_client_config.current.tenant_id
 }
 
-provider "google" {
+provider "gcp" {
   project = var.gcp_project_id
   region  = var.gcp_region
 }
